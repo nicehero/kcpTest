@@ -221,7 +221,7 @@ int main(int argc, char* argv[])
 	kcp->output = &kcp_output_cb;
 	// boot fast
 	// param2 nodelay
-	// param3 interval 2ms
+	// param3 interval 1ms
 	// param4 resend
 	// param5 disable congestion control
 	ikcp_nodelay(kcp, 1, 1, 2, 1);
