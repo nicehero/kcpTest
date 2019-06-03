@@ -15,7 +15,7 @@ python build.py
 
 cd ..
 
-python build.sh
+./build.sh
 
 python test.py
 
