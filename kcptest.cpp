@@ -58,7 +58,7 @@ void startReceive()
 }
 bool kcpUpdate()
 {
-#if 1
+#if 0
 	ikcp_update(kcp, (IUINT32)getMilliSeconds());
 	return true;
 #else
@@ -226,13 +226,14 @@ int main(int argc, char* argv[])
 	// param5 disable congestion control
 	ikcp_nodelay(kcp, 1, 1, 2, 1);
 	ikcp_wndsize(kcp, 256, 256);
+	kcp->interval = 1;
 	std::thread t([] {
 		asio::io_context::work work(gService);
 		gService.run();
 	});
 	startReceive();
 	startReceive2();
-	kcp_loop2();
+	kcp_loop();
 	client_loop();
 	client_loop2();
 	t.join();
