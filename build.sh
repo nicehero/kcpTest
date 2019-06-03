@@ -1,0 +1,1 @@
+g++ -g -Wall -std=c++11  -I./dep/include -I./dep/include/asio -L./dep/lib -lpthread -likcp -DASIO_STANDALONE kcptest.cpp -o kcpTest -Wl,-rpath=dep/lib
