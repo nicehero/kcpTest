@@ -4,6 +4,7 @@
 #include <thread>
 #include <memory>
 #include <chrono>
+#include <stdarg.h>
 
 asio::io_context gService;
 ikcpcb* kcp = nullptr;
@@ -34,6 +35,7 @@ int kcp_output_cb(const char *buf, int len, ikcpcb *kcp, void *user)
 	return 0;
 }
 
+#ifdef WIN32
 void nlog(const char *msg, ...)
 {
 	const int reservedLen = 1;//for \n
@@ -42,6 +44,7 @@ void nlog(const char *msg, ...)
 	vsnprintf(nullptr, 0, msg, args);
 	va_end(args);
 }
+#endif // WIN32
 
 void startReceive()
 {
