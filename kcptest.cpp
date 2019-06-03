@@ -116,7 +116,7 @@ void kcp_loop()
 	t->async_wait([t](std::error_code ec) {
 		if (ec)
 		{
-			nlog("KcpServerImpl::startRoutine error %s", ec.message().c_str());
+			printf("KcpServerImpl::startRoutine error %s\n", ec.message().c_str());
 			return;
 		}
 		kcpRoutine();
